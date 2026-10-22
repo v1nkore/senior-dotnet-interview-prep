@@ -1,0 +1,26 @@
+# Build output
+**/bin/
+**/obj/
+**/TestResults/
+**/BenchmarkDotNet.Artifacts/**/bin/
+**/BenchmarkDotNet.Artifacts/**/obj/
+
+# Local configuration and secrets
+**/appsettings.Local.json
+**/appsettings.*.Local.json
+**/.env
+**/.env.*
+!**/.env.example
+*.user
+*.suo
+
+# IDE and OS
+.idea/
+.vs/
+.vscode/
+.DS_Store
+
+# Local progress and personal job-search data
+private/
+job-search/
+

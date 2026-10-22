@@ -1,0 +1,22 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore projects/PetProjects.sln
+      - run: dotnet list projects/PetProjects.sln package --vulnerable --include-transitive --no-restore
+      - run: dotnet build projects/PetProjects.sln --configuration Release --no-restore
+      - run: dotnet test projects/PetProjects.sln --configuration Release --no-build
+
