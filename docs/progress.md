@@ -1,6 +1,6 @@
 # Подготовка к Senior .NET
 
-Обновлено: 22 октября 2026.
+Обновлено: 26 октября 2026.
 
 Цель: Senior .NET, удалённая работа, оффер от 300 000 ₽.
 
@@ -49,7 +49,7 @@
 - Повторный вызов провайдера: описан тот же платёж и проверка его статуса; гарантия зависит от контракта провайдера.
 - Восстановление платежа, зависшего в обработке: не проверяли, интервью остановлено.
 
-## Следующая сессия
+## План после 22 октября
 
 Продолжить Kubernetes с ConfigMap/Secret, затем probes, requests/limits, rollout/rollback и диагностика через `kubectl`. После учебного блока — часовое смешанное интервью по новому банку.
 
@@ -60,3 +60,19 @@
 - Наблюдаемость: trace/span/context propagation объяснены самостоятельно после напоминания термина `span`.
 - Kubernetes: заявлен как пробел почти с нуля. Разобраны Pod, Deployment, Service, labels/selectors, rolling update, ConfigMap и Secret. Следом — probes и ресурсы.
 - Формат скорректирован: задачи выделяются отдельным блоком; один вопрос не растягивать после существенной подсказки; пользователь сам завершает занятие.
+
+## Журнал — 23–26 октября
+
+- Kubernetes: разобраны probes, requests/limits, Ingress, `kubectl`-диагностика, PVC/`emptyDir`, StatefulSet, Job/CronJob, HPA/VPA/Cluster Autoscaler, Namespace, ResourceQuota и NetworkPolicy. База понята; инфраструктурные объекты, которых не было в практическом опыте, требуют повторения.
+- CI/CD: самостоятельно собран основной pipeline; подробно разобраны rollback, blue-green, canary, неизменяемый артефакт, expand-contract для базы, секреты и блокировка конкурирующих деплоев.
+- Тестирование: разделены unit/integration/E2E; разобраны Testcontainers, конкурентная идемпотентность и управляемая гонка через `TaskCompletionSource`. Существенный плюс — замечено, что тест обязан проверять реальную PostgreSQL, а барьер должен стоять около конкурентной операции.
+- Производительность: разобраны локализация задержек без traces, I/O под lock, GC/аллокации, большие выборки, keyset pagination и connection pool.
+- gRPC: объяснены HTTP/2, Protobuf, streaming, совместимость field numbers, cancellation и deadline.
+- System design: спроектирован сервис уведомлений — API, Outbox, broker, workers, идемпотентность, порядок Kafka, backpressure, общий rate limit и status API.
+- Security: разобраны подпись webhook, replay protection, object-level authorization, CSRF и XSS. Криптографическая проверка webhook и antiforgery потребовали подсказок.
+- ASP.NET Core / C#: разобраны DI lifetimes, `IHttpClientFactory`, порядок middleware, exception handler, `IEnumerable`/`IQueryable`, повторное перечисление, boxing, struct/class и record equality.
+- Полная ретроспективная разметка и показатели вынесены в [metrics.md](metrics.md).
+
+## Следующая сессия — актуально
+
+Продолжить C# с изменяемого ключа `Dictionary`, затем перейти к SOLID/Clean Architecture/CQRS. В ближайших повторениях вернуть Kubernetes, конкурентные integration-тесты, внешний side effect, CSRF/webhook security, keyset pagination и DI scopes.
