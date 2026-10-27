@@ -3,7 +3,8 @@
 - `interview-bank.md` — служебный банк для слепых пробных интервью.
 - `progress.md` — текущий формат занятий и журнал прогресса.
 - `coverage.md` — связь тем с проектами и практикой.
-- `applied-ai-track.md` — дополнительный трек по LLM, RAG, agents, evals и AI security.
+- `month-plan.md` — обязательный 30-дневный график Senior .NET + Applied AI.
+- `applied-ai-track.md` — обязательный блок по LLM, RAG, agents, evals и AI security.
 
 Банк не рекомендуется читать перед интервью: ведущий показывает только текущий вопрос.
 

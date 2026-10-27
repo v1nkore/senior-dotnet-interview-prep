@@ -4,7 +4,7 @@
 
 ## Структура
 
-- `docs/` — план подготовки, [текущие метрики](docs/metrics.md), [прикладной AI-трек](docs/applied-ai-track.md), карта покрытия и служебный банк интервью.
+- `docs/` — [обязательный месячный план](docs/month-plan.md), [текущие метрики](docs/metrics.md), [Applied AI](docs/applied-ai-track.md), карта покрытия и служебный банк интервью.
 - `projects/` — практические .NET-проекты: runtime, ASP.NET Core, EF Core, Kafka, Redis, gRPC, тестирование, производительность, наблюдаемость и Kubernetes.
 - `algorithms/` — задачи на структуры данных и алгоритмы на C#.
 - `archive/` — прежние материалы, сохранённые только как история; они не являются текущей программой.
@@ -17,7 +17,7 @@
 4. Пройти слепое интервью: вопросы заранее не просматриваются.
 5. Вернуть слабые темы через 1, 3 и 7 дней.
 
-Текущая программа ориентируется на .NET 10, C# 14, EF Core 10 и типичный стек Senior backend-вакансий: PostgreSQL, Kafka/RabbitMQ, Redis, Docker/Kubernetes, CI/CD и observability. Отдельный параллельный трек добавляет прикладные LLM/RAG/agent-навыки, не подменяя ими backend-базу.
+Текущая обязательная программа объединяет Senior .NET backend и Applied AI: .NET 10, C# 14, EF Core 10, PostgreSQL, Kafka/RabbitMQ, Redis, Docker/Kubernetes, CI/CD, observability, LLM API, RAG, tool calling/MCP, evals и AI security.
 
 ## Проверка
 
