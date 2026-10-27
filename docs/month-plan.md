@@ -2,22 +2,22 @@
 
 Период: 30 календарных дней с 27 октября 2026. Объём: 24 учебных дня по 4 часа, 4 дня восстановления и 2 резервных дня для реальных интервью, болезни или отставания. Всего — 96 обязательных учебных часов.
 
-Цель месяца — пройти и проверить всю карту, закрыть главные пробелы, собрать работающий AI-вертикальный срез и начать реальные собеседования. Месяц не гарантирует одинаково глубокое владение всеми 20 блоками: закреплённой считается только тема, подтверждённая повторным ответом и практикой.
+Цель месяца — сначала пройти и проверить всю техническую карту Senior .NET/backend, затем отдельным последним блоком изучить Applied AI и собрать работающий AI-вертикальный срез. Месяц не гарантирует одинаково глубокое владение всеми 20 блоками: закреплённой считается только тема, подтверждённая повторным ответом и практикой.
+
+Порядок жёсткий: первые 18 учебных дней посвящены прежней программе, последние 6 — Applied AI. До завершения технической части AI-вопросы и AI-практика в занятия не подмешиваются.
 
 ## Ежедневный режим — 4 часа
 
 | Время | Работа |
 |---:|---|
-| 60 минут | Слепое интервью: core + минимум один AI-вопрос со второго дня |
-| 75 минут | Главный core-блок дня: теория, код, SQL или диагностика |
-| 75 минут | `AiAssistantLab` или интеграционная практика текущей недели |
+| 60 минут | Слепое интервью по текущему этапу |
+| 75 минут | Теория и разбор механики текущего блока |
+| 75 минут | Код, SQL, диагностика или проектная практика |
 | 30 минут | Повтор 1/3/7, фиксация `S/Q/H/N`, ошибки и план следующего дня |
 
-Распределение 96 часов: 24 часа интервью, 34 часа core .NET, 28 часов Applied AI, 10 часов повторов, метрик и итоговой проверки. AI является обязательной частью общей программы, а не факультативом.
+Распределение 96 часов: 72 часа на техническую часть .NET/backend и 24 часа на завершающий Applied AI-блок. Интервью, практика и повторы входят в часы своего этапа. AI является обязательной частью общей программы, но изучается последним.
 
-## Неделя 1 — фундамент приложения и LLM
-
-### Core
+## Неделя 1 — фундамент .NET и приложения
 
 - C# runtime: equality, hashing, изменяемые ключи, boxing, GC и аллокации;
 - async/concurrency: cancellation, locks, `TaskCompletionSource`, race conditions;
@@ -25,21 +25,11 @@
 - EF Core/SQL: запросы, индексы, планы, concurrency и keyset pagination;
 - HTTP/gRPC: контракты, deadline, streaming и совместимость.
 
-### AI
-
-- вероятностная природа LLM, tokens и context window;
-- роли инструкций, prompt templates и версии промптов;
-- выбор модели по качеству, latency, стоимости и данным;
-- provider abstraction в .NET;
-- structured output по JSON Schema и валидация.
-
 ### Результат недели
 
-`AiAssistantLab` принимает запрос, вызывает модель через абстракцию, возвращает проверенный типизированный ответ и фиксирует модель, prompt version, latency и token usage. В конце — смешанное часовое интервью и первый пересчёт метрик.
+Закрыты основные пробелы C#/runtime, async, ASP.NET Core, EF Core/SQL и gRPC. Проведено смешанное часовое интервью и первый пересчёт метрик.
 
-## Неделя 2 — архитектура, надёжность и RAG
-
-### Core
+## Неделя 2 — архитектура и надёжность
 
 - SOLID и выбор паттерна по проблеме;
 - Clean Architecture, DDD, CQRS и границы транзакций;
@@ -47,74 +37,84 @@
 - RabbitMQ/Kafka: маршрутизация, ordering, consumer groups и backpressure;
 - Redis и тестирование: cache-aside, stampede, Testcontainers и race-тесты.
 
-### AI
-
-- ingestion и повторная индексация документов;
-- chunking, overlap, embeddings и metadata;
-- PostgreSQL + `pgvector`;
-- full-text, vector и hybrid retrieval;
-- reranking, citations, freshness и ACL до retrieval.
-
 ### Результат недели
 
-Работает вертикальный срез `ingestion → retrieval → structured answer with citations`. Тест доказывает, что пользователь не получает чужие документы. В конце — system design RAG-сервиса и повтор слабых тем первой недели.
+Проведены code review по архитектуре, конкурентный integration-тест и system design надёжной распределённой операции. Повторены слабые темы первой недели.
 
-## Неделя 3 — эксплуатация и агенты
-
-### Core
+## Неделя 3 — эксплуатация и завершение технической карты
 
 - Docker и Kubernetes: image/container, probes, resources, Pending, storage, StatefulSet, NetworkPolicy и autoscaling;
 - CI/CD: единый артефакт, миграции, blue-green/canary, rollback и блокировка деплоев;
 - производительность: GC, allocation profiling, pools, contention и connection pool;
 - observability: logs, metrics, traces, SLI/SLO и диагностика;
-- security, сети и Linux: JWT/OIDC, CSRF/XSS, webhook security, DNS/TCP/TLS и контейнерная диагностика.
-
-### AI
-
-- tool calling и валидация схемы инструмента;
-- workflow против автономного агента;
-- состояние, память, лимит шагов и восстановление;
-- timeout, retry и idempotency tool call;
-- MCP и границы его ответственности;
-- least privilege и human approval для опасных действий.
+- security, сети и Linux: JWT/OIDC, CSRF/XSS, webhook security, DNS/TCP/TLS и контейнерная диагностика;
+- алгоритмы и коллекции в timed-режиме;
+- system design, delivery/legacy и минимум четыре STAR-истории;
+- целевые повторы всех ответов `H/N` и нестабильных `Q`.
 
 ### Результат недели
 
-В `AiAssistantLab` есть read-only tool и изменяющее состояние действие с подтверждением, идемпотентностью и audit trail. Ошибка или повтор доставки не создаёт второй side effect. В конце — сценарий сбоя агента и смешанное интервью.
+Все 19 прежних блоков хотя бы один раз проверены. Проведено полное техническое интервью: теория, код/SQL, диагностика и system design. После фиксации результата начинается AI-блок.
 
-## Неделя 4 — качество, безопасность и собеседования
+## Неделя 4 — обязательный Applied AI
 
-### Core
+### День 19 — LLM как backend-зависимость
 
-- алгоритмы и коллекции в timed-режиме;
-- два полных system-design сценария;
-- behavioral: минимум четыре STAR-истории;
-- delivery/legacy: feature flags, strangler, совместимость контрактов;
-- целевые повторы всех ответов `H/N` и нестабильных `Q`.
+- исходная AI-диагностика;
+- вероятностная природа LLM, tokens и context window;
+- выбор модели, provider abstraction, timeout и cancellation;
+- prompt versions и structured output по JSON Schema.
 
-### AI
+### День 20 — RAG и данные
+
+- ingestion, chunking, embeddings и metadata;
+- PostgreSQL + `pgvector`;
+- full-text, vector и hybrid retrieval;
+- reranking, citations, freshness и ACL.
+
+### День 21 — Tool calling, MCP и агенты
+
+- схема и валидация инструмента;
+- workflow против автономного агента;
+- state, memory, step limits и восстановление;
+- MCP и границы его ответственности.
+
+### День 22 — действия и безопасность
+
+- idempotency, timeout и retry tool call;
+- least privilege и human approval;
+- prompt injection, indirect injection и data exfiltration;
+- PII, audit и безопасные traces.
+
+### День 23 — качество и эксплуатация
 
 - golden dataset и baseline;
 - retrieval-метрики, groundedness и task success;
 - детерминированные проверки и ограничения LLM-as-judge;
 - eval-регрессии в CI;
-- traces, token/cost/latency budgets, caching и fallback;
-- prompt injection, indirect injection, data exfiltration, PII и audit;
-- проверка кода, созданного coding agent.
+- token/cost/latency budgets, caching и fallback.
+
+### День 24 — интеграция и защита проекта
+
+- завершение `AiAssistantLab`;
+- тесты ACL, prompt injection и повторного tool call;
+- AI system design;
+- финальное смешанное интервью .NET + AI.
 
 ### Результат недели
 
-`AiAssistantLab` имеет eval-набор, CI-порог регрессии, traces и тесты безопасности. Проводятся два полных интервью по 60 минут и финальное двухчасовое: код/SQL, backend design и AI system design.
+`AiAssistantLab` реализует `LLM API → RAG → tools → evals → tracing/security`. Итоговая оценка отдельно показывает готовность core .NET, Applied AI и всей расширенной программы.
 
 ## Контрольные точки
 
 | День | Что проверяем |
 |---:|---|
-| 1 | Диагностика Applied AI и фиксация исходного уровня |
-| 6 | LLM API + structured output, обновление метрик |
-| 12 | RAG vertical slice и проверка ACL |
-| 18 | Tool calling/MCP, идемпотентность и human approval |
-| 24 | Evals, tracing, AI security и готовность проекта |
+| 1 | Технический baseline и изменяемый ключ `Dictionary` |
+| 6 | C#/ASP.NET/EF/SQL/gRPC, обновление метрик |
+| 12 | Архитектура, брокеры, Redis и тестирование |
+| 18 | Завершение 19 технических блоков и полное core-интервью |
+| 19 | Первая AI-диагностика и LLM API |
+| 24 | RAG, tools/MCP, evals, AI security и готовность проекта |
 | 30 | Итоговое смешанное интервью и новый процент готовности |
 
 ## Обязательные артефакты к концу месяца
