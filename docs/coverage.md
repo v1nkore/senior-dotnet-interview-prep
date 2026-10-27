@@ -23,6 +23,9 @@
 | Security | банк + code review практических API | OAuth/OIDC, JWT, OWASP API, secrets, audit |
 | Сети и Linux | банк + диагностика контейнеров | DNS, TCP/TLS, timeout, connection pool |
 | Delivery и legacy | банк + CI + миграционные сценарии | совместимые изменения, rollback, feature flags |
+| Applied AI для backend | `docs/applied-ai-track.md`, план `projects/AiAssistantLab` | LLM API, RAG, tool calling, evals, стоимость и AI security |
 
 Тема считается закреплённой после двух самостоятельных ответов в разные дни и одного применения в коде, SQL или проектировании.
+
+Applied AI учитывается отдельно от 19 обязательных блоков Senior .NET: он повышает рыночную широту, но отсутствие этого трека не маскирует пробелы в backend-основах.
 
