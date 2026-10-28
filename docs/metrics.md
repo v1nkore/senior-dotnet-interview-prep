@@ -54,14 +54,16 @@
 | Delivery / legacy | базовый–средний | expand-contract, rollback, безопасный релиз | feature flags, strangler, совместимость контрактов |
 | Applied AI | не оценено | общая backend-база применима | LLM API, RAG, agents/MCP, evals, AI security |
 
-## Что изменилось после 22 октября
+## История срезов
 
-- Kubernetes пройден от probes до NetworkPolicy, включая ресурсы, Ingress, PVC, StatefulSet, Job/CronJob и autoscaling.
-- Разобран полный CI/CD-поток, blue-green и совместимая миграция схемы.
-- Пройдены unit/integration testing, Testcontainers и детерминированный тест гонки через управляемый барьер.
-- Разобраны performance-сценарии: contention, GC/аллокации, большие выборки, keyset pagination и connection pool.
-- Пройдены основы gRPC, system design сервиса уведомлений и базовый API security.
-- Начат блок C# / ASP.NET Core: DI lifetimes, HttpClientFactory, middleware, LINQ, boxing и equality.
+| Дата | Количественный срез | Что изменилось |
+|---|---|---|
+| 4 октября | 5 из 17 разделов; 3 из 14 проектов | Исходный чек-лист до текущего цикла. |
+| 19 октября | Учебный день 1 | Начат 30-дневный цикл; первый baseline по надёжной обработке платежа. |
+| 22 октября | Первый структурированный качественный срез | Зафиксированы SQL/EF Core, reliability, observability и начало Kubernetes. |
+| 26 октября | 6 сессий; 82 ответа: `S36/Q29/H16/N1` | Kubernetes расширен до NetworkPolicy; добавлены CI/CD, testing, performance, gRPC, system design, security и ASP.NET Core/C#. |
+| 27 октября | 7 сессий; 92 ответа: `S37/Q34/H20/N1` | Разобраны equality/hashing, GC, resources, closures, buffers, variance, events и async; Applied AI добавлен как обязательный финальный блок. |
+| 28 октября | 8 сессий; 106 ответов: `S41/Q39/H25/N1`; 13 из 20 блоков | Углублены `ConfigureAwait`, `AsyncLocal`, `Task.WhenAll`, `ValueTask`, `Task.Run`, ограничение параллелизма, Redis semaphore, `Interlocked` и `volatile`. |
 
 ## Ближайшие повторы
 
