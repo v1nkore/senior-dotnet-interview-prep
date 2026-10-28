@@ -1,6 +1,6 @@
 # Подготовка к Senior .NET
 
-Обновлено: 27 октября 2026.
+Обновлено: 28 октября 2026.
 
 Цель: Senior .NET, удалённая работа, оффер от 300 000 ₽.
 
@@ -78,12 +78,35 @@
 - ASP.NET Core / C#: разобраны DI lifetimes, `IHttpClientFactory`, порядок middleware, exception handler, `IEnumerable`/`IQueryable`, повторное перечисление, boxing, struct/class и record equality.
 - Полная ретроспективная разметка и показатели вынесены в [metrics.md](metrics.md).
 
-## Следующая сессия — актуально
-
-Продолжить C# с изменяемого ключа `Dictionary`, затем перейти к SOLID/Clean Architecture/CQRS. В ближайших повторениях вернуть Kubernetes, конкурентные integration-тесты, внешний side effect, CSRF/webhook security, keyset pagination и DI scopes.
-
 ## Изменение плана — 27 октября
 
 По материалам видео [«Разработчик в 2026: новый roadmap и путь к AI Engineer»](https://www.youtube.com/watch?v=DWSohA-k6vA) добавлен прикладной AI-блок. В основной программе уже были инженерные основы, необходимые AI-системам; добавлены только отсутствовавшие части: LLM/context/structured outputs, RAG и `pgvector`, tool calling/MCP, evals, AI observability, стоимость, prompt injection и безопасное использование coding agents.
 
 После уточнения цели Applied AI переведён из дополнительного в обязательный блок. На весь объединённый объём установлен один месяц: 24 учебных дня × 4 часа. Порядок последовательный: 18 дней прежней технической программы, затем 6 дней Applied AI. Старые 45% относятся только к исходной core-карте; готовность к расширенной цели пересчитывается после AI-диагностики на 19-й учебный день.
+
+## Журнал — 27 октября
+
+Голосом: около 2 часов 7 минут — короткий разбор 17:00–17:06 и основная сессия 17:09–19:10 по Москве. В основную сессию вошли переподключения и короткие паузы. Отдельно было около 11 минут на обновление AI-плана; они не включены во время интервью.
+
+- C# equality: разобраны изменяемый ключ `Dictionary`, контракт `Equals`/`GetHashCode` и коллизии.
+- GC и ресурсы: поколения объяснены самостоятельно; GC roots, `Dispose`, финализатор и `IAsyncDisposable` потребовали уточнений.
+- C# runtime: разобраны closures, `static` lambda, `Span`, `Memory`, `stackalloc`, `ArrayPool`, variance, delegates и events.
+- Async: разобраны `async void`, ошибки в `Task`, sync-over-async, deadlock и thread-pool starvation.
+- Главный риск: многие runtime-темы разобраны с уточнениями и ещё не подтверждены повторным ответом.
+
+## Журнал — 28 октября
+
+Продолжительность: 1 час 55 минут, с 19:55 до 21:50 по Москве. Это восьмая завершённая учебная сессия цикла.
+
+- `ConfigureAwait(false)`: связь с `SynchronizationContext`, UI и ASP.NET Core разобрана с существенными подсказками.
+- `AsyncLocal`: разобраны `ExecutionContext`, изоляция значений между запросами и время жизни контекста.
+- `Task.WhenAll`: завершение всех задач, `AggregateException`, `Flatten`, а также приоритет `Faulted` над `Canceled`.
+- `ValueTask`: синхронный fast path, асинхронная ветка, ограничение повторного `await` и `AsTask`.
+- `Task.Run`: разделены I/O-bound и CPU-bound, UI и ASP.NET Core; длительная генерация отчёта вынесена в job/queue/worker с `202 Accepted` и `JobId`.
+- Конкурентность: `SemaphoreSlim`, `Parallel.ForEachAsync`, общий gate, распределённый семафор Redis, TTL/lease и отличие от token bucket.
+- Атомарность: потерянное обновление и `Interlocked.Increment` объяснены самостоятельно; `volatile` потребовал объяснения.
+- Формат обновлён: без вводных о процессе и без финальных проверочных вопросов; код можно показывать сразу, а голосом разбирать по одному фрагменту.
+
+## Следующая сессия — актуально
+
+Начать с `ConcurrentDictionary.GetOrAdd`: гарантируется ли однократный вызов value factory и почему в ней опасны побочные эффекты. Затем завершить C# concurrency и перейти к SOLID/Clean Architecture/CQRS. В повторения вернуть `ConfigureAwait(false)`, `AsyncLocal`, `ValueTask`, `volatile`, closures, finalization и `Span`/`Memory`.
